@@ -1,31 +1,29 @@
-﻿
-using Dapper;
-using PipelinePlayground.Configurations;
+﻿using PipelinePlayground.Configurations;
 using PipelinePlayground.Entities;
-using PipelinePlayground.Infrastructure.Data.Factories;
+using PipelinePlayground.Infrastructure.Data.Contexts;
 
 namespace PipelinePlayground
 {
     public sealed class App : IApp
     {
-        private readonly IOdbcConnectionFactory _odbcConnectionFactory;
-        private readonly string _connectionString;
+        private readonly IOdbcContext _odbcContext;
+        private string _connectionString;
 
         public App(
-            IOdbcConnectionFactory odbcConnectionFactory,
+            IOdbcContext odbcContext,
             Func<OdbcConfiguration> odbcConfiguration)
         {
-            _odbcConnectionFactory = odbcConnectionFactory;
+            _odbcContext = odbcContext;
             _connectionString = odbcConfiguration().ConnectionString; // call the function
         }
 
         public async Task Run()
         {
-            using var connection = _odbcConnectionFactory.GetConnection(_connectionString);
+            _odbcContext.OpenConnection(_connectionString);
 
             var sql  = "SELECT * FROM app_user";
 
-            var users = await connection.QueryAsync<AppUser>(sql);
+            var users = await _odbcContext.ExecuteAsync<AppUser>(sql);
 
             foreach (var user in users)
             {
