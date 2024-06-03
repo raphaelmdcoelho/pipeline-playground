@@ -54,6 +54,3 @@ jobs:
     - name: Set output
       id: image_info
       run: echo "image=ghcr.io/${{ github.repository_owner }}/${{ matrix.image_name }}:${{ github.sha }}" >> $GITHUB_ENV
-
-    - name: Output image info
-      run: echo "Image: ${{ env.image }}"
