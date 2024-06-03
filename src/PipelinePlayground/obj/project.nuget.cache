@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "dgSpecHash": "StpFRrToWSvV45NJoUq2AKBJq9ykTF5m93a8NAqjJuPvxSEMINr856t6xF2jSgvTOmUuj3sVIFHD4FG8WacBhQ==",
+  "success": true,
+  "projectFilePath": "C:\\Repos\\Playground\\pipeline-playground\\src\\PipelinePlayground\\PipelinePlayground.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\rmdco\\.nuget\\packages\\dapper\\2.1.35\\dapper.2.1.35.nupkg.sha512",
+    "C:\\Users\\rmdco\\.nuget\\packages\\dapper.fluentmap\\2.0.0\\dapper.fluentmap.2.0.0.nupkg.sha512",
+    "C:\\Users\\rmdco\\.nuget\\packages\\microsoft.extensions.configuration\\8.0.0\\microsoft.extensions.configuration.8.0.0.nupkg.sha512",
+    "C:\\Users\\rmdco\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\8.0.0\\microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\rmdco\\.nuget\\packages\\microsoft.extensions.configuration.fileextensions\\8.0.0\\microsoft.extensions.configuration.fileextensions.8.0.0.nupkg.sha512",
+    "C:\\Users\\rmdco\\.nuget\\packages\\microsoft.extensions.configuration.json\\8.0.0\\microsoft.extensions.configuration.json.8.0.0.nupkg.sha512",
+    "C:\\Users\\rmdco\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\8.0.0\\microsoft.extensions.dependencyinjection.8.0.0.nupkg.sha512",
+    "C:\\Users\\rmdco\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\rmdco\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\8.0.0\\microsoft.extensions.fileproviders.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\rmdco\\.nuget\\packages\\microsoft.extensions.fileproviders.physical\\8.0.0\\microsoft.extensions.fileproviders.physical.8.0.0.nupkg.sha512",
+    "C:\\Users\\rmdco\\.nuget\\packages\\microsoft.extensions.filesystemglobbing\\8.0.0\\microsoft.extensions.filesystemglobbing.8.0.0.nupkg.sha512",
+    "C:\\Users\\rmdco\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512",
+    "C:\\Users\\rmdco\\.nuget\\packages\\system.data.odbc\\8.0.0\\system.data.odbc.8.0.0.nupkg.sha512",
+    "C:\\Users\\rmdco\\.nuget\\packages\\system.text.encoding.codepages\\8.0.0\\system.text.encoding.codepages.8.0.0.nupkg.sha512",
+    "C:\\Users\\rmdco\\.nuget\\packages\\system.text.encodings.web\\8.0.0\\system.text.encodings.web.8.0.0.nupkg.sha512",
+    "C:\\Users\\rmdco\\.nuget\\packages\\system.text.json\\8.0.0\\system.text.json.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

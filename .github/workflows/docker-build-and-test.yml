@@ -1,0 +1,59 @@
+name: Build and Test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-test-and-push:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        workdir: 
+          - /app
+          - /another-app
+        image_name:
+          - pipeline-playground-app
+          - pipeline-playground-another-app
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: '8.0.x'
+
+    - name: Install dependencies
+      run: dotnet restore src/PipelinePlayground/PipelinePlayground.csproj
+    - name: Install test dependencies
+      run: dotnet restore tests/PipelinePlayground.Tests/PipelinePlayground.Tests.csproj
+
+    - name: Build
+      run: dotnet build src/PipelinePlayground/PipelinePlayground.csproj --configuration Release
+
+    - name: Run tests
+      run: dotnet test tests/PipelinePlayground.Tests/PipelinePlayground.Tests.csproj --no-build --verbosity normal
+
+    - name: Log in to GitHub Container Registry
+      run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.repository_owner }} --password-stdin
+
+    - name: Build Docker image
+      run: |
+        docker build \
+          --build-arg WORKDIR=${{ matrix.workdir }} \
+          -t ghcr.io/${{ github.repository_owner }}/${{ matrix.image_name }}:${{ github.sha }} \
+          .
+
+    - name: Push Docker image
+      run: |
+        docker push ghcr.io/${{ github.repository_owner }}/${{ matrix.image_name }}:${{ github.sha }}
+
+    - name: Set output
+      id: image_info
+      run: echo "image=ghcr.io/${{ github.repository_owner }}/${{ matrix.image_name }}:${{ github.sha }}" >> $GITHUB_ENV
+
+    - name: Output image info
+      run: echo "Image: ${{ env.image }}"

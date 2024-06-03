@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PipelinePlayground;
 using PipelinePlayground.Configurations;
+using PipelinePlayground.Infrastructure.Data.Contexts;
 using PipelinePlayground.Infrastructure.Data.Factories;
 using PipelinePlayground.Infrastructure.Data.Mapping.Dapper;
 
@@ -36,8 +37,8 @@ static void AddServices(ServiceCollection serviceCollection)
     {
         var connectionString = sp.GetRequiredService<IConfiguration>().GetConnectionString("Odbc");
 
-        var odbcConnectionFactory = sp.GetRequiredService<IOdbcConnectionFactory>();
-        var app = new App(odbcConnectionFactory, () => new OdbcConfiguration
+        var odbcContext = sp.GetRequiredService<IOdbcContext>();
+        var app = new App(odbcContext, () => new OdbcConfiguration
         {
             ConnectionString = connectionString!
         });
@@ -45,6 +46,7 @@ static void AddServices(ServiceCollection serviceCollection)
         return app;
     });
     serviceCollection.AddScoped<IOdbcConnectionFactory, OdbcConnectionFactory>();
+    serviceCollection.AddSingleton<IOdbcContext, OdbcContext>();
 
     //public delegate TResult Func<out TResult>(); -> does not take arguments just a return. If an Action, then should not has a return, just arguments.
 }
