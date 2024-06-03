@@ -38,7 +38,7 @@ jobs:
       run: dotnet test tests/PipelinePlayground.Tests/PipelinePlayground.Tests.csproj --no-build --verbosity normal
 
     - name: Log in to GitHub Container Registry
-      run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.repository_owner }} --password-stdin
+      run: echo "${{ secrets.GHCR_PAT }}" | docker login ghcr.io -u ${{ github.repository_owner }} --password-stdin
 
     - name: Build Docker image
       run: |
